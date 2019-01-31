@@ -6,8 +6,6 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
 
-//
-//
       PolishRecord expression = new PolishRecord();
         String s = expression.ReadToFile("/Users/vladimirlozickiy/Desktop/PolishRecord/src/main/resources/expression.csv");
         String[] Expression = s.split(" ");
