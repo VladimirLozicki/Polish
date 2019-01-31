@@ -1,46 +1,41 @@
-import java.io.IOException;
-import java.util.Scanner;
+
+import java.io.*;
 
 
 public class Main {
 
-
     public static void main(String[] args) throws IOException {
-            System.out.println("Write your expression");
-            Scanner scanner=new Scanner(System.in);
-            String string = scanner.nextLine();
-            System.out.println(PolishRecord.NewExpression(string));
-            System.out.println(PolishRecord.ToAnswer(PolishRecord.NewExpression(string)));
 
-//        FileInputStream in = null;
-//        BufferedReader bufferedReader = null;
-
-//        try {
-//            bufferedReader = new BufferedReader(
-//                    new FileReader("/Users/vladimirlozickiy/Desktop/project/src/main/resources/data.csv"));
-//            String line = bufferedReader.readLine();
-//            while(line != null){
-//                //read your line
-//            }
-//            in = new FileInputStream("/Users/vladimirlozickiy/Desktop/project/src/main/resources/data.csv");
-//            int c;
-//            while ((c = in.read()) != -1) {
-//                //read your bytes (c)
-//            }
 //
 //
-//        } finally {
-//            if (in != null) {
-//                in.close();
-//            }
-//            if(bufferedReader!=null){
-//                bufferedReader.close();
-//            }
-//        }
+      PolishRecord expression = new PolishRecord();
+        String s = expression.ReadToFile("/Users/vladimirlozickiy/Desktop/PolishRecord/src/main/resources/expression.csv");
+        String[] Expression = s.split(" ");
+        //PolishRecord t =new PolishRecord();
+        //System.out.println(expression.CorrectExpression(Expression[0]));
 
+
+        String [] Decoded = new String[Expression.length];
+        String [] answer = new String[Expression.length];
+        PolishRecord r = new PolishRecord();
+        for(int i = 0; i< Expression.length; i++) {
+            Decoded[i] =r.decodedExpression(Expression[i]);
+            answer[i] = String.valueOf(r.calculationResult(Decoded[i]));
+           // System.out.println(Decoded[i]);
+            //System.out.println(answer[i]);
         }
+        r.WriteToFile("/Users/vladimirlozickiy/Desktop/PolishRecord/src/main/resources/actualResult.csv", answer);
 
-      }
+        r.WriteToFile("/Users/vladimirlozickiy/Desktop/PolishRecord/src/main/resources/actualDecoded.csv", Decoded);
+
+
+
+
+
+    }
+
+
+}
 
 
 
