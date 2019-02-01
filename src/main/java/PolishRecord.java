@@ -34,6 +34,12 @@ public class PolishRecord {
         this.sourceExpression = sourceExpression;
     }
 
+    /*
+
+
+
+
+     */
     public String decodedExpression(String sourceExpression) {
         StringBuffer polishRecord = new StringBuffer();
         //String polishRecord = "";

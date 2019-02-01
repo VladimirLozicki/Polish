@@ -82,13 +82,29 @@ public class PolishRecordTest extends PolishRecord {
         for (int i=0; i<Expression.length; i++) {
             String e = r.CorrectExpression(Expression[i]);
             if(e.length()==0){
-                //System.out.println("this is ok");
+               continue;
             }
             if(e.length()!=0) {
-                System.out.println("This is not correct number = " + e);
+                System.out.println("This is not number = " + e);
                 throw new Exception("Please, correct your expression");
                 //System.out.println(e);
             }
         }
         }
+
+    @Test
+    public void calculationResult() {
     }
+
+    @Test
+    public void readToFile() {
+    }
+
+    @Test
+    public void writeToFile() {
+    }
+
+    @Test
+    public void correctExpression() {
+    }
+}
