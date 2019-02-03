@@ -20,8 +20,6 @@ public class Main {
         record.WriteToFile("/Users/vladimirlozickiy/Desktop/PolishRecord/src/main/resources/actualResult.csv", expr.answer);
         record.WriteToFile("/Users/vladimirlozickiy/Desktop/PolishRecord/src/main/resources/actualDecoded.csv", expr.Decoded);
     }
-
-
 }
 
 

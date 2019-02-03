@@ -10,7 +10,6 @@ import java.util.ArrayList;
  * record and calculation expression
  */
 public class PolishRecord {
-
     private static final char MINUS = '-';
     private static final char PLUS = '+';
     private static final char MULTIPLY = '*';
@@ -32,7 +31,6 @@ public class PolishRecord {
 
         this.sourceExpression = sourceExpression;
     }
-
 
     /**
      * first method
@@ -73,7 +71,6 @@ public class PolishRecord {
         return polishRecord.toString();
     }
 
-
     /**
      *
      * @param polishRecord
@@ -84,7 +81,6 @@ public class PolishRecord {
             polishRecord.append(sourceExpression.charAt(i));
     }
 
-
     /**
      *
      * @param stack
@@ -94,7 +90,6 @@ public class PolishRecord {
     private void PriorityOne(ArrayDeque<Character> stack , int i, String sourceExpression){
         stack.push(sourceExpression.charAt(i));
     }
-
 
     /**
      *
@@ -109,7 +104,6 @@ public class PolishRecord {
         stack.pop();
     }
 
-
     /**
      *
      * @param polishRecord
@@ -120,7 +114,6 @@ public class PolishRecord {
             polishRecord.append(stack.pop());
         }
     }
-
 
     /**
      *  Get input string with decodedExpression,
@@ -155,7 +148,6 @@ public class PolishRecord {
         return stack.pop();
     }
 
-
     /**
      *
      * @param decodedExpression
@@ -178,7 +170,6 @@ public class PolishRecord {
         }
     }
 
-
 /**
  * Get priority
    @param a
@@ -200,13 +191,10 @@ public class PolishRecord {
         }
     }
 
-
-
 /**
   Method reading input file with expression
   @param name input name file
  */
-
 
     public String ReadToFile(String name) {
         try {
@@ -245,7 +233,6 @@ public class PolishRecord {
         return s;
     }
 
-
 /**
  * Get line of file Expression and checks on other
  * symbols, such us !@#$%^& etc.
@@ -265,7 +252,7 @@ public class PolishRecord {
                 case ')':
                     continue;
             }
-            if(p <47 || p >58){
+            if(p < 47 || p > 58 ){
                 sb.append(p);
            }
         }
