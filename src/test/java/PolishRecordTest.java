@@ -11,12 +11,22 @@ import java.util.ArrayList;
 
 import static junit.framework.TestCase.assertEquals;
 
-public class PolishRecordTest extends PolishRecord {
+/**
+ * Class Test
+ *
+ */
+
+
+
+public class PolishRecordTest {
     @Test
     @After
+    /**
+     *  сheck answer actual and expected
+     */
     public void decodedExpression() throws Exception {
-        ArrayList<String> act = new ArrayList<String>();
-        ArrayList<String> ac = new ArrayList<String>();
+        ArrayList<String> actualExpression = new ArrayList<String>();
+        ArrayList<String> expectedExpression = new ArrayList<String>();
         BufferedReader reader = new BufferedReader
                 (new FileReader("/Users/vladimirlozickiy/Desktop/PolishRecord/src/main/resources/actualDecoded.csv"));
         BufferedReader reader1 = new BufferedReader
@@ -25,28 +35,27 @@ public class PolishRecordTest extends PolishRecord {
         String expected;
         while ((actual = reader.readLine()) != null) {
             if (!actual.isEmpty()) {
-               // System.out.println(actual);
-                act.add(actual);
+                actualExpression.add(actual);
             }
         }
         while ((expected = reader1.readLine()) != null) {
             if (!expected.isEmpty()) {
-                // System.out.println(expected);
-                ac.add(expected);
+                expectedExpression.add(expected);
             }
         }
-     assertEquals(act,ac);
-     Assert.assertEquals(act, ac);
+     Assert.assertEquals(actualExpression, expectedExpression);
     }
-
-
 
     @Test
     @After
-    public void toAnswer() throws Exception {
+    /**
+     *
+     *check answer actual and expected
+     */
+    public void calculationResult() {
         try {
-            ArrayList<String> act1 = new ArrayList<String>();
-            ArrayList<String> ac1 = new ArrayList<String>();
+            ArrayList<String> actualExpression = new ArrayList<String>();
+            ArrayList<String> expectedExpected = new ArrayList<String>();
             BufferedReader reader = new BufferedReader
                     (new FileReader("/Users/vladimirlozickiy/Desktop/PolishRecord/src/main/resources/actualResult.csv"));
             BufferedReader reader1 = new BufferedReader
@@ -55,56 +64,42 @@ public class PolishRecordTest extends PolishRecord {
             String expected;
             while ((actual = reader.readLine()) != null) {
                 if (!actual.isEmpty()) {
-                    act1.add(actual);
+                    actualExpression.add(actual);
                 }
             }
             while ((expected = reader1.readLine()) != null) {
                 if (!expected.isEmpty()) {
-                    ac1.add(expected);
+                    expectedExpected.add(expected);
                 }
             }
-
-
-            Assert.assertEquals(act1, ac1);
+            Assert.assertEquals(actualExpression, expectedExpected);
         } catch (Exception e) {
             e.getMessage();
         }
-
     }
+
+
 
     @Test
     @Before
-    public void ReadToFile() throws Exception {
-        PolishRecord r = new PolishRecord();
+    /**
+     * check line expression in the not number
+     */
+    public void correctExpression() throws  Exception {
+        PolishRecord r = new PolishRecord("/Users/vladimirlozickiy/Desktop/PolishRecord/src/main/resources/expression.csv");
         String s = r.ReadToFile("/Users/vladimirlozickiy/Desktop/PolishRecord/src/main/resources/expression.csv");
-        String[] Expression = s.split(" ");
-        Double f[] = new Double[Expression.length];
-        for (int i=0; i<Expression.length; i++) {
-            String e = r.CorrectExpression(Expression[i]);
+        r.Expression = s.split(" ");
+
+
+        for (int i=0; i<r.Expression.length; i++) {
+            String e = r.CorrectExpression(r.Expression[i]);
             if(e.length()==0){
-               continue;
+                continue;
             }
             if(e.length()!=0) {
                 System.out.println("This is not number = " + e);
                 throw new Exception("Please, correct your expression");
-                //System.out.println(e);
             }
         }
-        }
-
-    @Test
-    public void calculationResult() {
-    }
-
-    @Test
-    public void readToFile() {
-    }
-
-    @Test
-    public void writeToFile() {
-    }
-
-    @Test
-    public void correctExpression() {
     }
 }
